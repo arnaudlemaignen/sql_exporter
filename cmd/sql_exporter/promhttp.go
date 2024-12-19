@@ -131,7 +131,7 @@ func contextFor(req *http.Request, exporter sql_exporter.Exporter) (context.Cont
 	// the idea here is that max 5min scrape time from prometheus is not enough for long queries 
 	// so here we override to the configured timeout - timeout offset (40min - 1min for instance)
 	timeout = configTimeout - timeoutOffset
-        klog.Warnf("FINAL TIMEOUT (`%s`)", timeout)
+	klog.Warningf("FINAL TIMEOUT (`%s`)", timeout)
 
 	return context.WithTimeout(context.Background(), timeout)
 }
